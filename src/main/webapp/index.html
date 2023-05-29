@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <style>
+    .container{
+         max-width: 960px;
+    }
+    .row{
+        display: flex;
+        flex-direction: row;
+    }
+    .card:hover{
+        box-shadow: 1px 1px 12px 12px rgba(0, 0, 255, .2);
+        opacity: 100%;
+    }
+    .card{
+        width:fit-content(100%);
+        display: flex;
+        flex-direction: column;
+        opacity: 50%;
+        padding:20px;
+
+    }
+    .card-header{
+        position:relative;
+        padding: 15px;
+
+    }
+    .card-header>img{
+        border-radius: 50%;
+
+    }
+    .card-content{
+        font-family: 华文中宋;
+        text-align: justify;
+    }
+    .card-footer{
+        text-align: center;
+        font-family: 华文中宋;
+    }
+    .card-footer>a{
+        background-color: lightsalmon;
+        text-decoration: none;
+        padding: 10px;
+        color: white;
+        border-radius: 5px;
+    }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="card">
+            <div class="card-header">
+                <img src="https://picsum.photos/200/200/?random=1" alt="">
+            </div>
+            <div class="card-content">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium debitis dolorum ducimus iste
+                    laudantium non optio reprehenderit tenetur ullam! Aliquid at, commodi deserunt dolorem eligendi
+                    fugiat natus nihil non nostrum quisquam, ratione.</p>
+            </div>
+            <div class="card-footer">
+                <a class="more" href="">Read More</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <img src="https://picsum.photos/200/200/?random=2" alt="">
+            </div>
+            <div class="card-content">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium debitis dolorum ducimus iste
+                    laudantium non optio reprehenderit tenetur ullam! Aliquid at, commodi deserunt dolorem eligendi
+                    fugiat natus nihil non nostrum quisquam, ratione.</p>
+            </div>
+            <div class="card-footer">
+                <a class="more"  href="">Read More</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <img src="https://picsum.photos/200/200/?random=3" alt="">
+            </div>
+            <div class="card-content">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium debitis dolorum ducimus iste
+                    laudantium non optio reprehenderit tenetur ullam! Aliquid at, commodi deserunt dolorem eligendi
+                    fugiat natus nihil non nostrum quisquam, ratione.</p>
+            </div>
+            <div class="card-footer">
+                <a class="more"  href="">Read More</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="module">
+let show=function(){
+    let sons=$('.row').children();
+    let len=sons.length;
+   $('.card-content').hide();
+    for(let i=0;i<len;i++)
+    {
+        let cc=$(sons.get(i));
+        console.log(cc);
+        let content=cc.children('.card-content').eq(0);
+        let more=cc.children('.card-footer').children('.more');
+        cc.mouseleave(function (e){
+
+            content.fadeOut(500);
+            more.css("background-color","lightsalmon");
+        })
+        cc.mouseover(function(e){
+            content.fadeIn(500);
+            cc.css("justify-content",'center');
+            cc.css("align-items",'center');
+            more.css("background-color","red");
+        })
+    }
+}
+show();
+
+
+
+</script>
+</body>
+</html>
