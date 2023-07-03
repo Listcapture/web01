@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none; /*去掉列表默认样式*/
+      text-decoration: none; /*去掉文字默认样式*/
+      background-color: #ecc7b9;
+    }
+    nav {
+      position: absolute; /*固定导航栏位置*/
+    }
+    nav ul {
+      margin: 0 auto;
+      list-style: none;
+      display: flex;
+      width: 500px;
+      height: 100%;
+    }
+
+    nav a {
+      color: #6c6c6c;
+      padding: 0.5em 1em;
+    }
+    nav a:hover {
+      color: #ff4400;
+    }
+
+    nav ul li a:link,
+    nav ul li a:visited {
+      /*单个菜单的具体属性*/
+      display: block;
+      width: 238px;
+      height: 100%;
+      text-align: center;
+      line-height: 50px;
+      font-weight: bold;
+      font-size: 22px;
+      background-color: #f5f5f5;
+    }
+
+    nav ul li a:hover,
+    nav ul li a:active {
+      /*设定鼠标点击 移动过的属性*/
+      background-color: #fff;
+    }
+
+    nav ul li ul {
+      /* 二级菜单整体设定   */
+      display: none; /* 隐藏二级菜单列表*/
+      position: absolute; /*二级菜单的位置固定*/
+    }
+    nav ul li:hover ul {
+      display: block; /*二级菜单  将显示为块级元素*/
+      width: auto; /*消除二级菜单的滚动条，因为继承了父级的宽度*/
+    }
+    nav ul li ul li {
+      float: none; /*消除二级菜单的浮动*/
+      background-color: #fff;
+      width: auto;
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <ul>
+    <li>
+      <a href="">第一级列表1</a>
+      <ul>
+        <li>
+          <a href="https://www.baidu.com">百度</a>
+        </li>
+        <li>
+          <a href="https://zhihu.com">知乎</a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="">第一级列表2</a>
+      <ul>
+        <li>
+          <a href="">第二级列表1.2</a>
+        </li>
+        <li>
+          <a href="">第二级列表2.2</a>
+        </li>
+        <li>
+          <a href="">第二级列表3.2</a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="">第一级列表2</a>
+    </li>
+    <li>
+      <a href="">第一级列表2</a>
+    </li>
+  </ul>
+</nav>
+</body>
+</html>
+
