@@ -11,7 +11,9 @@
 2. 点击导航栏时，已经登录的用户名/密码被刷新了
    解决方案：
    点击导航栏时，在超链接的url中发送用户名何密码
-   例如：  <a href="Professor?clientName=${user.clientName}&password=${user.password}"> <li>教授</li></a>
+   例如：
+   ```HTML
+    <a href="Professor?clientName=${user.clientName}&password=${user.password}"> <li>教授</li></a>
    将用户名和密码直接发送过去，注意不能传递封装好的实体类（User等），只能传递字符
-3. 如何直接在jsp页面中从数据库获取数据并渲染到jsp页面中
+4. 如何直接在jsp页面中从数据库获取数据并渲染到jsp页面中
    解决方案：首先在JSP中使用Java代码获取数据库数据，同时使用 request.setAttribute("") 向session 中传递请求消息 ，然后就可以使用JSTL 动态生成页面并渲染了
