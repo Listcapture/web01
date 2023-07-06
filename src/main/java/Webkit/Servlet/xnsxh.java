@@ -3,6 +3,7 @@ package Webkit.Servlet;
 import Webkit.DataBaseUtils;
 import Webkit.Entity.User;
 import Webkit.Entity.xnsx;
+import Webkit.Login.loginTest;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -31,11 +32,7 @@ public class xnsxh extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<xnsx> xnsxs=new ArrayList<xnsx>();
-        User u= new User();
-        u.setClientName((String) req.getAttribute("clientName"));
-        u.setPassword((String) req.getAttribute("password"));
-        req.setAttribute("user",u);
-        try (Connection conn = DataBaseUtils.getConnection(); Statement stmt = conn.createStatement())
+       try (Connection conn = DataBaseUtils.getConnection(); Statement stmt = conn.createStatement())
         {
             ResultSet rs= stmt.executeQuery("select * from xnsxh");
 

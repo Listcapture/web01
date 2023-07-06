@@ -12,14 +12,19 @@ import java.io.IOException;
 
 /**
  * @ Author     :LeeTee.
- * @ Date       ：Created in 11:17 2023/7/5
+ * @ Date       ：Created in 17:04 2023/7/6
  * @ Description：
  * @ Modified By：
  */
-@WebServlet("/positionIntroduction")
-public class positionIntroduction extends HttpServlet {
+@WebServlet("/home")
+public class home extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-     req.getRequestDispatcher("/WEB-INF/JSP/positionIntroduction.jsp").forward(req,resp);
+        req.getRequestDispatcher("/home.jsp").forward(req,resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        this.doGet(req,resp);
     }
 }

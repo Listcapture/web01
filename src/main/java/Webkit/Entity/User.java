@@ -10,6 +10,15 @@ public class User {
     private int id;
    private String clientName;
     private String password;
+    public User(String clientName,String password)
+    {
+        this.clientName=clientName;
+        this.password=password;
+    }
+    public User()
+    {
+
+    }
 
     public int getId() {
         return id;

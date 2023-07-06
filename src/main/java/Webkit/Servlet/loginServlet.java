@@ -2,11 +2,13 @@ package Webkit.Servlet;
 
 import Webkit.Entity.User;
 import Webkit.Login.loginTest;
+import com.mysql.cj.Session;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
@@ -22,20 +24,19 @@ public class loginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String account=(String)req.getParameter("account");
         String password=(String)req.getParameter("password");
-        User loginuser=new User();
-        loginuser.setClientName(account);
-        loginuser.setPassword(password);
+        User loginuser=new User(account,password);
         User examineUser= loginTest.login(loginuser);
         if(examineUser!=null)
         {
             req.setAttribute("user",examineUser);
+            HttpSession session=req.getSession();
+            session.setAttribute("user",examineUser);
             req.getRequestDispatcher("/home.jsp").forward(req,resp);
         }else {
             String msg="ERROR";
             req.setAttribute("msg" ,msg);
             req.getRequestDispatcher("/login.jsp").forward(req,resp);
         }
-
     }
 
     @Override

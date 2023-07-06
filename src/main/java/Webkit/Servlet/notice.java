@@ -2,6 +2,8 @@ package Webkit.Servlet;
 
 import Webkit.DataBaseUtils;
 import Webkit.Entity.News;
+import Webkit.Entity.User;
+import Webkit.Login.loginTest;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -25,7 +27,7 @@ import java.util.List;
 public class notice extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String sql="select * from news";
+            String sql="select * from news";
         List<News> noticeList=new ArrayList<>();
         //新闻  标题-时间-内容 News
         try (Connection conn= DataBaseUtils.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql);)

@@ -51,7 +51,6 @@
 <div style="text-align: center;background-image: -webkit-linear-gradient(right,aliceblue,lightcoral,lightskyblue,antiquewhite);font-size:4em;color:white">专业简介</div>
 <hr style="color:lightcoral">
 <div class="introduction">
-  <--800- 450-->
   <div class="video1" style="width: 100%;display: flex;align-items: center;justify-content: center">
     <video style="width:800px;height:450px" src="https://ccec.nefu.edu.cn/__local/1/A0/CB/A4AD4D6B7955DFECFA7572BA427_CB7694FF_123151B1.mp4?e=.mp4" controls="controls" autoplay loop="loop"></video>
   </div>

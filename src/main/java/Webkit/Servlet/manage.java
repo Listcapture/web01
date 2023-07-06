@@ -3,6 +3,7 @@ package Webkit.Servlet;
 import Webkit.DataBaseUtils;
 import Webkit.Entity.User;
 import Webkit.Entity.News;
+import Webkit.Login.loginTest;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -27,10 +28,6 @@ public class manage extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //        个人信息
-        User u=new User();
-        u.setClientName((String)req.getParameter("clientName"));
-        u.setPassword((String )req.getParameter("password"));
-        req.setAttribute("user",u);
         String sql="select * from news";
         List<News> newsList= new ArrayList<News>(),noticeList=new ArrayList<>();
         //新闻  标题-时间-内容 News

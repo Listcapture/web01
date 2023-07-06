@@ -5,7 +5,6 @@
 <%@ page import="Webkit.DataBaseUtils" %>
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.ResultSet" %>
-<%@ page import="java.sql.*" %>
 <%@ page language="java" pageEncoding="UTF-8" %>
 <c:url var="b" value="/"></c:url>
 <base href="${b}">
@@ -29,16 +28,22 @@
         .board-content{
             background: -webkit-linear-gradient(right,aliceblue,lightcoral,lightskyblue,antiquewhite);
             width: 100%;
-            height:100%;
+            height:60%;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
 
         }
         .news-dist{
             width:40%;
-            height:100%;
+            height:60%;
 
+        }
+        .news-dist:hover{
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+        }
+        .notice-dist:hover{
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
         }
         .news-dist-head{
             font-size: 2em;
@@ -47,9 +52,20 @@
             border-left: 1px deeppink solid;
             border-right: 1px pink solid;
             border-bottom: 1px aliceblue solid;
+            padding: 10px;
         }
         .news-dist-item{
             display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .item:hover{
+            box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+        }
+        .item{
+            display: flex;
+            padding: 10px;
+            flex-wrap: wrap;
             align-items: center;
             justify-content: center;
         }
@@ -59,16 +75,22 @@
         }
         .notice-dist{
             width: 40%;
-            height: 100%;
+            height:60%;
         }
         .auto-sub{
             display: none;
         }
+        #item-text{
+            position: relative;
+            right: 0;
+        }
+        a{
+            color:white;
+        }
     </style>
 </head>
 <body>
-<form class="auto-sub" action="News" method="get" ><button type="submit"></button></form>
-<form class="auto-sub" action="notice" method="get"><button  type="submit"></button></form>
+
 <div class="board">
     <div class="board-content">
         <div class="news-dist">
@@ -76,12 +98,13 @@
             <div class="news-dist-item">
                 <ul>
                     <%
-                        String sql="select * from news";
-                        List<News> newsList=new ArrayList<>();
+
+                         String sqlx="select * from news";
+                         List<News> newsLists=new ArrayList<>();
                         //新闻  标题-时间-内容 News
-                        try (Connection conn= DataBaseUtils.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql);)
+                        try (Connection conn= DataBaseUtils.getConnection(); PreparedStatement stmt = conn.prepareStatement(sqlx);)
                         {
-                            ResultSet rs=stmt.executeQuery(sql);
+                            ResultSet rs=stmt.executeQuery(sqlx);
                             String head,date,content;
                             while(rs.next())
                             {
@@ -89,21 +112,21 @@
                                 date=rs.getString("date");
                                 content=rs.getString("content");
                                 News n=new News(head,date,content);
-                                newsList.add(n);
+                                newsLists.add(n);
                             }
-                            request.setAttribute("news",newsList);
+                            request.setAttribute("news",newsLists);
                         }catch (Exception e)
                         {
                             System.out.println("加载新闻失败,数据库连接失效!");
                         }
-
                     %>
-
+                    <c:set var="curn" value="1"></c:set>
                     <c:forEach items="${news}" var="n" >
 <%--                        <c:if test="${cnt>=6}">--%>
 <%--                            <c:set var="flag" value="false"></c:set>--%>
 <%--                        </c:if>--%>
-                        <li class="item" style="font-size: 1.2em;border-bottom: 1px aliceblue solid; padding: 10px;">${n.head}<span style="font-size: 0.25em">&nbsp;&nbsp;${n.date}</span></li>
+                        <a href="GenerateNews?number=${curn}&types=news&clentName=${user.clientName}&password=${user.password}"><li class="item" style="font-size: 1.2em;border-bottom: 1px aliceblue solid; padding: 10px;">${n.head}<span id="item-text" style="font-size: 0.25em;">&nbsp;&nbsp;${n.date}</span></li></a>
+                        <c:set var="curn" value="${curn+1}"></c:set>
                     </c:forEach>
                 </ul>
             </div>
@@ -115,12 +138,12 @@
             <div class="news-dist-item">
                 <ul>
                     <%
-                       sql="select * from notice";
+                        sqlx="select * from notice";
                         List<News> noticeList=new ArrayList<>();
                         //新闻  标题-时间-内容 News
-                        try (Connection conn= DataBaseUtils.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql);)
+                        try (Connection conn= DataBaseUtils.getConnection(); PreparedStatement stmt = conn.prepareStatement(sqlx);)
                         {
-                            ResultSet rs=stmt.executeQuery(sql);
+                            ResultSet rs=stmt.executeQuery(sqlx);
                             String head,date,content;
                             while(rs.next())
                             {
@@ -137,12 +160,10 @@
                         }
 
                     %>
-
+                    <c:set var="cur" value="1"></c:set>
                     <c:forEach items="${notice}" var="n" >
-                        <%--                        <c:if test="${cnt>=6}">--%>
-                        <%--                            <c:set var="flag" value="false"></c:set>--%>
-                        <%--                        </c:if>--%>
-                        <li class="item" style="font-size: 1.2em;border-bottom: 1px aliceblue solid; padding: 10px;">${n.head}<span style="font-size: 0.25em">&nbsp;&nbsp;${n.date}</span></li>
+                        <a href="GenerateNews?number=${cur}&types=notice&clentName=${user.clientName}&password=${user.password}"><li class="item" style="font-size: 1.2em;border-bottom: 1px aliceblue solid; padding: 10px;">${n.head}<span id="item-text" style="font-size: 0.25em">&nbsp;&nbsp;${n.date}</span></li></a>
+                        <c:set var="cur" value="${cur+1}"></c:set>
                     </c:forEach>
 
                 </ul>

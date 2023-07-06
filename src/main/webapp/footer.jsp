@@ -119,5 +119,47 @@
     }
     func();
 </script>
+
+<%
+    String uri=request.getRequestURI();
+    request.setAttribute("uri",uri);
+%>
+
+<c:if test="${uri.contains('home.jsp')}">
+    <script>
+        $('#btn1').css('background-color','#d15a39');
+    </script>
+</c:if>
+<c:if test="${uri.contains('Introduction')}">
+    <script>
+        $('#btn2').css('background-color','#d15a39');
+    </script>
+</c:if>
+<c:if test="${uri.contains('lab')}">
+    <script>
+        $('#btn3').css('background-color','#d15a39');
+    </script>
+</c:if>
+<c:if test="${uri.contains('Professor')||uri.contains('Tutor')}">
+    <script>
+        $('#btn4').css('background-color','#d15a39');
+    </script>
+</c:if>
+<c:if test="${uri.contains('xnsxh')}">
+    <script>
+        $('#btn5').css('background-color','#d15a39');
+    </script>
+</c:if>
+<c:if test="${stype=='news'}">
+    <script>
+        $('#btn6').css('background-color','#d15a39');
+    </script>
+</c:if>
+<c:if test="${stype=='notice'}">
+    <script>
+        $('#btn7').css('background-color','#d15a39');
+    </script>
+</c:if>
+
 </body>
 </html>

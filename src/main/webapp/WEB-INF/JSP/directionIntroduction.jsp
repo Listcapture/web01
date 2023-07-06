@@ -51,7 +51,6 @@
 <div style="text-align: center;background-image: -webkit-linear-gradient(right,aliceblue,lightcoral,lightskyblue,antiquewhite);font-size:4em;color:white">方向简介</div>
 <hr style="color:lightcoral">
 <div class="introduction">
-    <--800- 450-->
     <div class="video1" style="width: 100%;display: flex;align-items: center;justify-content: center">
         <video style="width:800px;height:450px" src="resources/pokemon.mp4" controls="controls" autoplay loop="loop"></video>
     </div>

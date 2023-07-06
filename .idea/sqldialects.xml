@@ -4,5 +4,7 @@
     <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/26e6ee86-c51a-429b-9e79-ee47704e519e/console.sql" dialect="MySQL" />
     <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/26e6ee86-c51a-429b-9e79-ee47704e519e/console_1.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/Webkit/Login/loginTest.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/main/java/Webkit/Service/service.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/main/java/Webkit/Servlet/modifyUser.java" dialect="GenericSQL" />
   </component>
 </project>

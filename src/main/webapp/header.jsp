@@ -5,7 +5,7 @@
   Time: 13:54
   To change this template use File | Settings | File Templates.
 --%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" pageEncoding="UTF-8"%>
 <c:url var="b" value="/"></c:url>
 <base href="${b}">
@@ -20,6 +20,11 @@
     <link rel="stylesheet" href="resources/CSS/Header.css">
 </head>
 <body>
+
+<%
+  User user= (User) session.getAttribute("user");
+  request.setAttribute("user",user);
+%>
 <audio id="bgm" src="resources/music/AsItWas.mp3" controls="controls"  ></audio>
 <c:if test="${user==null}">
     <div style="background-color: #002147;color: white;width:100%;text-align: right">账号：admin，密码：admin123</div>
@@ -34,7 +39,7 @@
         </div>
     </div>
 
-    <div class="Admin">
+    <div class="Admin" >
         <c:if test="${user!=null}">
         </c:if>
         <c:if test="${user==null}">
@@ -46,9 +51,10 @@
                 <form action="manage" method="post">
                     <input style="display: none" type="text" name="clientName" value="${user.clientName}">
                     <input style="display: none" type="password" name="password" value="${user.password}">
-                    <button type="submit" style="color:white;background-image: -webkit-linear-gradient(right,aliceblue,lightcoral,lightskyblue,antiquewhite);border-radius:3px;background-color: #447fff;color: white">管理网站</button>
+                    <button type="submit" style="padding:5px;color:white;background-image: -webkit-linear-gradient(right,aliceblue,lightcoral,lightskyblue,antiquewhite);border-radius:3px;background-color: #447fff;color: white">管理网站</button>
                 </form>
-
+                <button type="" style="color:white;background-image: -webkit-linear-gradient(right,aliceblue,lightcoral,lightskyblue,antiquewhite);border-radius:3px;background-color: #447fff;color: white;padding:5px">
+                    &nbsp;&nbsp;&nbsp;<a href="index">&nbsp;登出&nbsp;</a>&nbsp;&nbsp;&nbsp;</button>
             </c:if>
             <c:if test="${user==null}">
                 <button type="button" style="color:white;background-image:-webkit-linear-gradient(right,aliceblue,lightcoral,lightskyblue,antiquewhite) ;border-radius:3px;background-color: #447fff;color: white;padding: 3px"><a href="login.jsp" style="text-decoration: none;color: white">登录</a></button>
