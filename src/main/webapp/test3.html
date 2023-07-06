@@ -1,17 +1,67 @@
-<html>
+
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <title>Title</title>
     <meta charset="UTF-8">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="resources/CSS/nav.css">
+    <style>
+      a{
+          list-style: none;
+      }
+    </style>
 </head>
+
 <body>
-<form action="/Base/" method="post">
-    <input type="text" name="username">
-    <input type="text">
+<div class="nav">
+    <ul class="shell">
+        <li class="button">
+            <a href=""><span>首页</span></a>
+        </li>
+        <li class="button">
+
+            <span>专业介绍</span>
+            <!--    图片+描述 static -->
+            <ul>
+                <a href=""><li>专业简介</li></a>
+                <a href=""><li>方向简介</li></a>
+            </ul>
+        </li>
+        <li class="button">
+            <!--    图片+描述 static-->
+            <span>实验室</span>
+            <ul>
+                <a href=""><li>ICT实验室</li></a>
+                <a href=""><li>WS实验室</li></a>
+                <a href=""><li>NLP实验室</li></a>
+                <a href=""><li>高性能实验室</li></a>
+            </ul>
+        </li>
+        <li class="button">
+            <!--  card 展示 static -->
+            <span>教师队伍</span>
+            <ul>
+                <a href=""> <li>教授</li></a>
+                <a href=""> <li>副教授</li></a>
+                <a href=""> <li>讲师</li></a>
+            </ul>
+        </li>
+        <li class="button">
+            <a href=""><span>就业指南</span></a>
+        </li>
+        <li class="button">
+            <a href=""><span>新闻</span></a>
+        </li>
+        <li class="button">
+            <a href=""><span>公告</span></a>
+        </li>
+    </ul>
 
 
-</form>
-
+</div>
 
 </body>
+
 </html>

@@ -1,0 +1,94 @@
+a{
+    text-decoration: none;
+}
+ul{
+    margin:0;
+    padding: 0;
+}
+.navigation{
+    box-sizing: content-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 20px;
+    color: #f4f1de;
+    text-decoration: none;
+    z-index: 9999;
+}
+.navigation a{
+    color:white;
+}
+ul li{
+    width: inherit;
+
+}
+.shell{
+    height:66px;
+    display: flex;
+    z-index: 9999;
+}
+.button,.portrait{
+    background-color: #50536e;
+    width: 14.28%;
+    height: 65px;
+    text-align: center;
+    line-height: 65px;
+    transition: .3s;
+    cursor: pointer;
+    z-index: 9999;
+}
+.portrait::before{
+    content: '';
+    display: block;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    transform: translate(30px,-30px);
+    background-image: url('../resources/imgs/northern-lights-3273425_1280.jpg');
+    background-size: cover;
+    border: 10px solid #fff;
+    z-index: 9999;
+}
+.information{
+    width: 220px;
+    background-color: #e07a5f;
+    transform: translate(-20px,-200px);
+    border-radius: 10px;
+    padding: 20px 0;
+    line-height: 0;
+    height: 0;
+    transition: .3s;
+    opacity: 0;
+    z-index: 9999;
+
+}
+.button:hover{
+    background-color: #d15a39;
+    z-index: 9999;
+}
+.button li:hover{
+    background-color: #ffb29d;
+    z-index: 9999;
+}
+.button ul li{
+    height: 0;
+    transition: .2s;
+    opacity: 0;
+    transform: translateY(-65px);
+    background-color: #e07a5f;
+    z-index: 9999;
+}
+.button:hover li{
+    height: 65px;
+    opacity: 1;
+    transform: translateY(0);
+    z-index: 9999;
+}
+
+.portrait:hover .information {
+    opacity: 1;
+    line-height: 65px;
+    transform: translate(-20px, -10px);
+    height: auto;
+    z-index: 9999;
+}

@@ -1,41 +1,96 @@
-<!DOCTYPE html>
-<html lang="en">
-<!--1.在默认状态下，使用display:none;将二级菜单隐藏。-->
-<!--2.当一级菜单中的列表标签li获取焦点 (hover)后，使用display:blick;将二级菜单显示出来。-->
-<!--3.使用position: relative;和position: absolute;分别得一级菜单和二级菜单设置相对定位和绝对定位。-->
+
+<html>
 <head>
+  <title>Title</title>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>导航栏动画</title>
-  <link rel="stylesheet" href="CSS/navi.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    *{
+      margin:0;
+      padding: 0;
+
+    }
+    .board{
+      color: deeppink;
+      box-sizing: border-box;
+      z-index: 999;
+
+    }
+    .board-content{
+      background-image: -webkit-linear-gradient(right,antiquewhite,aqua,aquamarine,aliceblue);
+      width: 100%;
+      height:100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+    }
+    .news-dist{
+      width:40%;
+      height:100%;
+
+    }
+    .news-dist-head{
+      font-size: 2em;
+      text-align: center;
+      border-top: 2px solid red;
+      border-left: 1px deeppink solid;
+      border-right: 1px pink solid;
+      border-bottom: 1px aliceblue solid;
+    }
+    .news-dist-item{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+     .space{
+       width:20px;
+     }
+    .notice-dist{
+      width: 40%;
+      height: 100%;
+
+
+    }
+  </style>
 </head>
-
 <body>
+<div class="board">
+  <div class="board-content">
+    <div class="news-dist">
+      <div class="news-dist-head">要闻</div>
+      <div class="news-dist-item">
+        <ul>
+         <li class="item" style="font-size: 2em;border-bottom: 1px aliceblue solid;">xxxx <span style="font-size: 0.25em">2021-7-16 15:23 </span></li>
+         <li class="item" style="font-size: 2em;border-bottom: 1px aliceblue solid;">xxxx <span style="font-size: 0.25em">2021-7-16 15:23 </span></li>
+         <li class="item" style="font-size: 2em;border-bottom: 1px aliceblue solid;">xxxx <span style="font-size: 0.25em">2021-7-16 15:23 </span></li>
+         <li class="item" style="font-size: 2em;border-bottom: 1px aliceblue solid;">xxxx <span style="font-size: 0.25em">2021-7-16 15:23 </span></li>
+         <li class="item" style="font-size: 2em;border-bottom: 1px aliceblue solid;">xxxx <span style="font-size: 0.25em">2021-7-16 15:23 </span></li>
+         <li class="item" style="font-size: 2em;border-bottom: 1px aliceblue solid;">xxxx <span style="font-size: 0.25em">2021-7-16 15:23 </span></li>
+        </ul>
+      </div>
 
-<nav class="nav">
+    </div>
+    <div class="space"></div>
+    <div class="notice-dist">
+      <div class="news-dist-head">公告</div>
+      <div class="news-dist-item">
+        <ul>
+          <li class="item" style="font-size: 2em;border-bottom: 1px aliceblue solid;">xxxx <span style="font-size: 0.25em">2021-7-16 15:23 </span></li>
+          <li class="item" style="font-size: 2em;border-bottom: 1px aliceblue solid;">xxxx <span style="font-size: 0.25em">2021-7-16 15:23 </span></li>
+          <li class="item" style="font-size: 2em;border-bottom: 1px aliceblue solid;">xxxx <span style="font-size: 0.25em">2021-7-16 15:23 </span></li>
+          <li class="item" style="font-size: 2em;border-bottom: 1px aliceblue solid;">xxxx <span style="font-size: 0.25em">2021-7-16 15:23 </span></li>
+          <li class="item" style="font-size: 2em;border-bottom: 1px aliceblue solid;">xxxx <span style="font-size: 0.25em">2021-7-16 15:23 </span></li>
+          <li class="item" style="font-size: 2em;border-bottom: 1px aliceblue solid;">xxxx <span style="font-size: 0.25em">2021-7-16 15:23 </span></li>
 
-  <input type="radio" name="nav-item-opt" id="nav-item-opt-1" checked>
-  <label class="nav-item" for="nav-item-opt-1">专业介绍</label>
+        </ul>
+      </div>
 
-  <input type="radio" name="nav-item-opt" id="nav-item-opt-2">
-  <label class="nav-item" for="nav-item-opt-2">实验室</label>
+    </div>
 
-  <input type="radio" name="nav-item-opt" id="nav-item-opt-3">
-  <label class="nav-item" for="nav-item-opt-3">教师队伍</label>
 
-  <input type="radio" name="nav-item-opt" id="nav-item-opt-4">
-  <label class="nav-item" for="nav-item-opt-4">就业指南</label>
-
-  <input type="radio" name="nav-item-opt" id="nav-item-opt-5">
-  <label class="nav-item" for="nav-item-opt-5">新闻</label>
-
-  <input type="radio" name="nav-item-opt" id="nav-item-opt-6">
-  <label class="nav-item" for="nav-item-opt-6">公告</label>
-
-  <div class="tracker"></div>
-</nav>
-
+  </div>
+</div>
 </body>
-
 </html>
