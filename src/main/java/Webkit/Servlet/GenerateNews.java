@@ -33,7 +33,7 @@ public class GenerateNews extends HttpServlet {
         if(type.equals("news"))
         {
             //news -get Info
-            String sql="select * from news";
+            String sql="select * from news ORDER BY ID DESC";
             //新闻  标题-时间-内容 News
             try (Connection conn= DataBaseUtils.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql);)
             {
@@ -63,7 +63,7 @@ public class GenerateNews extends HttpServlet {
 
         }else {
             //notice  -get Info
-            String sql="select * from notice";
+            String sql="select * from notice ORDER BY id DESC";
             //新闻  标题-时间-内容 News
             try (Connection conn= DataBaseUtils.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql);)
             {

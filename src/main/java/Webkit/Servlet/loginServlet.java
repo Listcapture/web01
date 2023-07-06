@@ -26,15 +26,20 @@ public class loginServlet extends HttpServlet {
         String password=(String)req.getParameter("password");
         User loginuser=new User(account,password);
         User examineUser= loginTest.login(loginuser);
+        String loginMessage=null;
         if(examineUser!=null)
         {
             req.setAttribute("user",examineUser);
             HttpSession session=req.getSession();
             session.setAttribute("user",examineUser);
+            session.setAttribute("message",null);
+            session.setAttribute("loginMessage",loginMessage);
             req.getRequestDispatcher("/home.jsp").forward(req,resp);
         }else {
-            String msg="ERROR";
-            req.setAttribute("msg" ,msg);
+
+            HttpSession session=req.getSession();
+            loginMessage="登录失败,用户名或密码错误";
+            req.setAttribute("loginMessage",loginMessage);
             req.getRequestDispatcher("/login.jsp").forward(req,resp);
         }
     }

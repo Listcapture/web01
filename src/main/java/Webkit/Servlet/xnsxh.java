@@ -34,7 +34,7 @@ public class xnsxh extends HttpServlet {
         List<xnsx> xnsxs=new ArrayList<xnsx>();
        try (Connection conn = DataBaseUtils.getConnection(); Statement stmt = conn.createStatement())
         {
-            ResultSet rs= stmt.executeQuery("select * from xnsxh");
+            ResultSet rs= stmt.executeQuery("select * from xnsxh order by id DESC");
 
             while(rs.next()) {
                 String date = rs.getString("date"), time = rs.getString("time"), head = rs.getString("head");

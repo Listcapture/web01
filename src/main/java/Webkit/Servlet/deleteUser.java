@@ -1,6 +1,7 @@
 package Webkit.Servlet;
 
 import Webkit.DataBaseUtils;
+import Webkit.Service.service;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -22,18 +23,21 @@ import java.sql.PreparedStatement;
 public class deleteUser extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String sql="delete from User where id=?";
-        try (Connection conn= DataBaseUtils.getConnection(); PreparedStatement stmt=conn.prepareStatement(sql);){
-            stmt.setInt(1,Integer.valueOf(req.getParameter("id")));
-            stmt.executeUpdate();
-        }catch (Exception e)
-        {
-            e.printStackTrace();
-        }
+
+        String message=null;
+        int id= (int )Integer.valueOf(req.getParameter("id"));
+        boolean ok=service.getClientNameByID((int)Integer.valueOf(req.getParameter("id")))!=null;
         HttpSession session=req.getSession();
-        session.setAttribute("message","删除成功");
+        if(ok)
+        {
+            service.deleteUser(id);
+            message="删除成功";
+        }else message="删除失败,用户ID不存在";
+        session.setAttribute("message",message);
         req.getRequestDispatcher("/WEB-INF/JSP/manage.jsp").forward(req,resp);
 
     }
+
+
 
 }

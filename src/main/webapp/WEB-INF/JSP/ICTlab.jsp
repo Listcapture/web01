@@ -63,7 +63,7 @@
 
     <div class="description">
         <div id="videox" style="width: 800px;height: 432px;">
-            <video style="width: 100%" src="https://com-huatec-public.obs.cn-north-1.myhuaweicloud.com/upload/2023/06/ict.mp4" controls="controls" autoplay loop="loop"></video>
+            <video style="width: 100%" src="https://ccec.nefu.edu.cn/__local/9/B5/1D/E300B4E988E2AB39981357396FD_423752C2_14859CD6.mp4?e=.mp4" controls="controls" autoplay loop="loop"></video>
         </div>
 <%--        // 1200-655--%>
         <div style="width:960px;height:437px">

@@ -1,12 +1,8 @@
+<%@ page import="Webkit.Entity.User" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <c:url var="b" value="/"></c:url>
 <base href="${b}">
-<%
-    HttpSession session2= request.getSession();
-  String message=(String) session2.getAttribute("message");
-  request.setAttribute("message",message);
-%>
 
 <!doctype html>
 <html lang="en">
@@ -19,74 +15,18 @@
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <title>Document</title>
     <style>
-        .modal {
+        .gohide{
             display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.5);
         }
-
-        .modal-content {
+        .work-modal-content {
             background-color:linen;
-            margin: 15% auto;
+            margin: auto;
             padding: 20px;
             border: 1px solid #888;
-            width: 400px;
-            height:400px;
+            width: 800px;
+            height:800px;
         }
 
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        .modal-item
-        {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin:10px;
-        }
-        .modal-item-desc
-        {
-            flex: 30%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-        }
-        .modal-item-input {
-            flex: 70%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .flex-center{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .btncss1{
-            width:50px;
-            height:30px;
-            padding:5px;
-            border-radius: 5px;
-            color:lightcoral;
-        }
     </style>
 </head>
 <body>
@@ -105,9 +45,22 @@
     </div>
     <div class="container">
 
+
+        <!--主页~-->
+        <div id="manage-home" class="m-item " style="overflow: hidden" >
+            <div class="m-person-head">
+                <span style="color: white;overflow: hidden" >欢迎使用软件工程网站管理系统</span>
+            </div>
+            <hr>
+
+            <div class="m-person-content" style="color: white">
+           <%@include file="/starspace.jsp"%>
+            </div>
+
+        </div>
         <!-- 管理个人信息-->
 
-        <div class="m-item" >
+        <div id="user" class="m-item gohide " >
             <div class="m-person-head">
                 <span >我的信息</span>
             </div>
@@ -139,7 +92,33 @@
                 <div class="m-item-item">
                     <div class="m-item-item">
                         <button >
-                            注意:只要能够登入该网页,就成为了管理员!
+                            使用更新(修改)操作,直接返回门户网站!(同时清空缓存)
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>'
+
+        <!-- 管理就业信息-->
+        <div id="work" class="m-item gohide" >
+            <div class="m-person-head">
+                <span >就业信息管理</span>
+            </div>
+            <hr>
+
+            <div class="m-person-content">
+                <div class="m-item-item">
+                    <button onclick="openAddWorkModal()">发布就业信息</button>
+                </div>
+                <div class="m-item-item">
+                    <button ><a href="xnsxh" style="color:white">查看就业信息</a></button>
+                </div>
+                <div class="m-item-item">
+                    <div class="m-item-item">
+                        <button >
+                            tips:查看后跳转到门户网站相应栏目
                         </button>
                     </div>
                 </div>
@@ -147,7 +126,41 @@
             </div>
 
         </div>
-        <!-- 管理就业信息-->
+        <!-- 公告 管理-->
+        <div id="news" class="m-item  gohide" >
+            <div class="m-person-head">
+                <span >新闻公告</span>
+            </div>
+            <hr>
+            <div class="m-person-content">
+                <div class="m-item-item">
+                    <button onclick="openAddNewsModal()">发布新闻</button>
+                </div>
+                <div class="m-item-item">
+                    <button ><a href="GenerateNewsx?types=news&option=sel1" style="color:white">查看新闻</a></button>
+                </div>
+                <div class="m-item-item">
+                    <div class="m-item-item">
+                        <button >
+                            tips:查看后跳转到门户网站相应栏目
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- 新闻 管理-->
+        <div id="notice" class="m-item gohide" >
+            <div class="m-person-head">
+                <span >公告管理 ? No 摸鱼? Yes</span>
+            </div>
+            <hr>
+            <div class="m-person-content">
+                <img style="width: 100%;height:100%" src="resources/imgs/摸鱼.jpg" alt="">
+            </div>
+        </div>
     </div>
 
 </div>
@@ -238,8 +251,8 @@
         <br>
         <form action="findUser" method="post">
             <div class="modal-item">
-                <div class="modal-item-desc">修改前用户名:</div>
-                <div class="modal-item-input"><input type="text" name="FclientName"></div>
+                <div class="modal-item-desc">要查找的用户名:</div>
+                <div class="modal-item-input"><input type="text" name="clientName"></div>
             </div>
             <br>
             <div class="modal-item">
@@ -253,19 +266,77 @@
         </form>
     </div>
 </div>
+<div id="addWork" class="modal">
+    <div class="modal-content work-modal-content">
+        <span class="close" onclick="closeAddWorkModal()">&times;</span>
+        <br>
+        <h2>添加就业信息</h2>
+        <br>
+        <form action="addWork" method="post">
+            <div class="modal-item">
+                <div class="modal-item-desc">输入招聘会日期mm-dd</div>
+                <div class="modal-item-input"><input type="text" name="date"></div>
+            </div>
+            <br>
+            <div class="modal-item">
+                <div class="modal-item-desc">输入招聘会事件hh-mm</div>
+                <div class="modal-item-input"><input type="text" name="time"></div>
+            </div>
+            <br>
+            <div class="modal-item">
+                <div class="modal-item-desc">起个标题</div>
+                <div class="modal-item-input"><input type="text" name="head"></div>
+            </div>
+            <br>
+            <div class="modal-item">
+                <div class="modal-item-desc">输入详细内容</div>
+                <div class="modal-item-input"><textarea placeholder="招聘企业描述:" name="content" cols="21" rows="30"></textarea></div>
+            </div>
+            <br>
+            <div class="flex-center">
+                <button type="submit" class="btncss1">提交</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="addNews" class="modal">
+    <div class="modal-content work-modal-content">
+        <span class="close" onclick="closeAddNewsModal()">&times;</span>
+        <br>
+        <h2>添加新闻</h2>
+        <br>
+        <form action="addNews" method="post">
+            <div class="modal-item">
+                <div class="modal-item-desc">输入新闻日期yyyy-mm-dd</div>
+                <div class="modal-item-input"><input type="text" name="date"></div>
+            </div>
+            <br>
+            <div class="modal-item">
+                <div class="modal-item-desc">输入新闻标题</div>
+                <div class="modal-item-input"><input type="text" name="head"></div>
+            </div>
+            <br>
+            <div class="modal-item">
+                <div class="modal-item-desc">输入详细内容</div>
+                <div class="modal-item-input"><textarea placeholder="新闻详情:" name="content" cols="21" rows="30"></textarea></div>
+            </div>
+            <br>
+            <div class="flex-center">
+                <button type="submit" class="btncss1">提交</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<%
+    String message=String.valueOf(session.getAttribute("message"));
+%>
 <c:if test="${message!=null}">
     <script>
-        alert(${message});
+        alert("${message}");
     </script>
 </c:if>
-<c:if test="${message==null}">
-    <script>
-        alert("null");
-    </script>
-</c:if>
-
-
-
 
 
 <script>
@@ -297,19 +368,35 @@
     function closeFindUserModal(){
         $('#findUser').hide();
     }
+    function openAddWorkModal(){
+        $("#addWork").show();
+    }
+    function closeAddWorkModal(){
+        $('#addWork').hide();
+    }
+    function openAddNewsModal(){
+        $('#addNews').show();
+    }
+    function closeAddNewsModal(){
+        $('#addNews').hide();
+    }
+    let sons=$('.container').children(".m-item");
     let func =function (e){
         let siblings=e.parentNode.children;
+
+        // sons 0 1 2 3
+        // siblings 1 2 3 4
         for(let i=1;i<siblings.length-2;i++)
         {
             if(siblings[i]==e) {
                 $(siblings[i]).css("background-color"," linear-gradient(2000deg,#517fa4,#243949)")
+                $(sons[i]).show();
             } else {
                 $(siblings[i]).hide();
+                $(sons[i]).hide();
             }
         }
-
-
-
+        $('#manage-home').hide();
     }
     let func_show=function(e)
     {
@@ -317,6 +404,12 @@
         for(let i=1;i<siblings.length-2;i++)
         {
             $(siblings[i]).show();
+        }
+        //同时把首页锁定
+        $('#manage-home').show();
+        for(let i=1;i<sons.length;i++)
+        {
+            $(sons[i]).hide();
         }
 
     }

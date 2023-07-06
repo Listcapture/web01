@@ -1,3 +1,20 @@
+<%@ page import="java.sql.Connection" %>
+<%@ page import="Webkit.DataBaseUtils" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.io.Writer" %>
+<%@ page import="java.io.PrintWriter" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: 李田
+  Date: 2023/7/4
+  Time: 11:16
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page  language="java" pageEncoding="UTF-8" %>
+<c:url var="b" value="/"></c:url>
+<base href="${b}">
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,14 +26,14 @@
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <title>星空特效</title>
     <style>
-        *{
+        body{
             margin: 0;
             padding: 0;
-            background-color: black;
         }
-        body{
+        .space{
             overflow: hidden;
             background-color: #000;
+
         }
         h1{
             position: absolute;
@@ -32,15 +49,15 @@
 
     </style>
 </head>
-<body>
-<a href="https://juejin.cn/post/7066628837328551973" style="color:white ">教程链接</a>
-<a href="sakura.html">樱花</a>
-<button type="submit"><img src="" alt=""></button>
-<audio id="bgm" src="WEB-INF/music/最终幻想胜利.mp3" autoplay="autoplay" hidden="true" loop="loop"  ></audio>
+<body class="space">
+<audio id="bgm" src="resources/music/最终幻想.mp3" autoplay="autoplay"  hidden="until-found" ></audio>
 <h1>
 
 </h1>
-<canvas></canvas>
+<div class="space">
+    <canvas></canvas>
+</div>
+
 <script>
     var canvas=document.querySelector("canvas");
     ctx=canvas.getContext("2d");
@@ -120,18 +137,10 @@
     }
     setTimeout(print,250);
 
-        let audio=$('#bgm');
-        audio.change(function()
-        {
-            if(audio.paused){
-                audio.play();
-                audio.paused=false;
-            }
-        })
+
 
 </script>
 
 
 </body>
 </html>
-

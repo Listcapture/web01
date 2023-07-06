@@ -108,16 +108,14 @@
             <button type="submit">GO</button>
         </form>
     </div>
-    <c:if test="${msg!=null}">
-        <script type="module">
-            let func=function (){
-                alert("用户名/密码错误！")
-            }
-            func();
-        </script>
-
-
-    </c:if>
+<%
+String loginMessage=(String)session.getAttribute("loginMessage");
+%>
+<c:if test="${loginMessage!=null}">
+    <script>
+        alert('${loginMessage}');
+    </script>
+</c:if>
 
 </body>
 </html>

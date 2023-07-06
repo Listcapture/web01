@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
+import static java.awt.SystemColor.window;
+
 /**
  * @ Author     :LeeTee.
  * @ Date       ：Created in 20:36 2023/7/6
@@ -25,11 +27,16 @@ import java.sql.PreparedStatement;
 public class addUser extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String sql="insert into User (clientName,password) values (?,?)";
+
+        String message="添加成功";
         service.addUser(String.valueOf(req.getParameter("clientName")),String.valueOf(req.getParameter("password")));
         HttpSession session=req.getSession();
-        session.setAttribute("message","添加成功!");
+        session.setAttribute("message",message);
         req.getRequestDispatcher("/WEB-INF/JSP/manage.jsp").forward(req,resp);
     }
 
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+     this.doPost(req,resp);
+    }
 }

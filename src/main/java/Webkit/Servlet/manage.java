@@ -4,11 +4,13 @@ import Webkit.DataBaseUtils;
 import Webkit.Entity.User;
 import Webkit.Entity.News;
 import Webkit.Login.loginTest;
+import com.mysql.cj.protocol.x.XMessage;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -72,6 +74,6 @@ public class manage extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        this.doPost(req,resp);
+          this.doPost(req,resp);
     }
 }

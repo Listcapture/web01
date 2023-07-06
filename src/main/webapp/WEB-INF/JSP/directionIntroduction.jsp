@@ -52,7 +52,7 @@
 <hr style="color:lightcoral">
 <div class="introduction">
     <div class="video1" style="width: 100%;display: flex;align-items: center;justify-content: center">
-        <video style="width:800px;height:450px" src="resources/pokemon.mp4" controls="controls" autoplay loop="loop"></video>
+        <video style="width:800px;height:450px" src="https://ccec.nefu.edu.cn/__local/9/B5/1D/E300B4E988E2AB39981357396FD_423752C2_14859CD6.mp4?e=.mp4" controls="controls" autoplay loop="loop"></video>
     </div>
     <div class="description">
         <div>

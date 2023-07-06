@@ -29,25 +29,18 @@ public class modifyUser extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session=req.getSession();
         boolean ok= service.isExist(String.valueOf(req.getParameter("FclientName")),String.valueOf(req.getParameter("Fpassword")));
+        String message=null;
         if(ok)
         {
-            String sqlx="update User set clientName=? ";
-            String sqly="update User set password = ? ";
-            try (Connection conn= DataBaseUtils.getConnection(); PreparedStatement stmt1=conn.prepareStatement(sqlx);PreparedStatement stmt2=conn.prepareStatement(sqly);){
-                stmt1.setString(1,String.valueOf(req.getParameter("LclientName")));
-                stmt2.setString(1,String.valueOf(req.getParameter("Lpassowrd")));
-                stmt1.execute();
-                stmt2.execute();
-            }catch (Exception e)
-            {
-                e.printStackTrace();
-            }
-           session.setAttribute("message","更新成功");
-
-        }else session.setAttribute("message","输入原账号/密码错误!");
-
-        req.getRequestDispatcher("/WEB-INF/JSP/manage.jsp").forward(req,resp);
+           service.updateUser(String.valueOf(req.getParameter("FclientName")),String.valueOf(req.getParameter("Fpassword")),String.valueOf(req.getParameter("LclientName")),String.valueOf(req.getParameter("Lpassword")));
+          message="更新成功";
+        }else message="输入原账号/密码错误!";
+        session.setAttribute("message",message);
+        req.getRequestDispatcher(service.lastUrlPath(req.getContextPath())+"/index").forward(req,resp);
 
     }
 
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        this.doPost(req,resp);
+    }
 }
